@@ -1,0 +1,13 @@
+step,issue,action,rationale,rows_before,rows_after
+train-A1,Fully blank row(s),Dropped,A row with every field null carries no information; imputing would invent a customer,440833,440832
+train-A2,Integer fields stored as float,Cast to int64,Values were all whole numbers; floats existed only because of NaN,440832,440832
+train-A3,Categorical text hygiene,Strip + Title Case + category dtype,"No variants found, applied defensively so the pipeline is reusable",440832,440832
+train-A4,Duplicate rows / repeated IDs inside file,drop_duplicates (none found),Safety net; zero rows removed on this data,440832,440832
+train-A5,CustomerID collides across train/test,Added customer_key = <source>_<id> and a source column,The same numeric ID refers to different people in each file,440832,440832
+train-A6,Outliers,None removed,Zero IQR outliers; all values within plausible business ranges,440832,440832
+test-A1,Fully blank row(s),Dropped,A row with every field null carries no information; imputing would invent a customer,64374,64374
+test-A2,Integer fields stored as float,Cast to int64,Values were all whole numbers; floats existed only because of NaN,64374,64374
+test-A3,Categorical text hygiene,Strip + Title Case + category dtype,"No variants found, applied defensively so the pipeline is reusable",64374,64374
+test-A4,Duplicate rows / repeated IDs inside file,drop_duplicates (none found),Safety net; zero rows removed on this data,64374,64374
+test-A5,CustomerID collides across train/test,Added customer_key = <source>_<id> and a source column,The same numeric ID refers to different people in each file,64374,64374
+test-A6,Outliers,None removed,Zero IQR outliers; all values within plausible business ranges,64374,64374
